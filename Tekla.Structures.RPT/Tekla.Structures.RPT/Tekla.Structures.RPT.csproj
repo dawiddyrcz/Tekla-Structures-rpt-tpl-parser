@@ -47,10 +47,14 @@
     <Compile Include="InteligentSplit.cs" />
     <Compile Include="InternalString.cs" />
     <Compile Include="Pageheader.cs" />
+    <Compile Include="ParsedProperty.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyParser.cs" />
     <Compile Include="Row.cs" />
+    <Compile Include="RPTFile.cs" />
     <Compile Include="RPTObject.cs" />
+    <Compile Include="RPTParserException.cs" />
     <Compile Include="Template.cs" />
     <Compile Include="Text.cs" />
     <Compile Include="Valuefield.cs" />

@@ -27,7 +27,7 @@ namespace Tekla.Structures.RPT
 
                 if (quoteLevel.Equals(0))
                 {
-                    if (!char.IsWhiteSpace(inputText[i]))
+                    if (!char.IsWhiteSpace(inputText[i]) & !inputText[i].Equals('\r'))
                         outputText.Append(inputText[i]);
                 }
                 else

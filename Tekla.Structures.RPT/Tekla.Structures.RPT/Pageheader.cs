@@ -9,6 +9,11 @@ namespace Tekla.Structures.RPT
     public class Pageheader : RPTObject
     {
 
-        public override List<RPTObject> RPTObjects { get; set; }
+        public override List<RPTObject> RPTObjects { get; set; } = new List<RPTObject>();
+
+        internal override void BindProperty(ParsedProperty property)
+        {
+            //TODO implementation
+        }
     }
 }

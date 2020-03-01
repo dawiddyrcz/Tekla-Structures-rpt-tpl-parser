@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace Tekla.Structures.RPT
 {
-    public class Row : RPTObject
+    internal class PropertyParser
     {
-        public override List<RPTObject> RPTObjects { get; set; } = new List<RPTObject>();
-
-        internal override void BindProperty(ParsedProperty property)
+        public ParsedProperty Parse(string text)
         {
             //TODO implementation
+            return new ParsedProperty();
         }
     }
 }
