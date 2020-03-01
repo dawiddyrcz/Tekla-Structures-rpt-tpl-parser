@@ -46,5 +46,26 @@ namespace Tekla.Structures.RPT.Tests
                 i++;
             }
         }
+
+        [Test]
+        public void Case2()
+        {
+            var internalStr = new InternalString();
+            var fileName = Path.Combine(GetTestDir(), "case2.txt");
+            string text = File.ReadAllText(fileName);
+
+            var result = internalStr.Unpack(text);
+
+            Console.WriteLine(result.Text);
+
+            int i = 1;
+            foreach (var item in result.InternalTexts)
+            {
+                Console.WriteLine("********** " + i);
+                Console.WriteLine(item);
+                Console.WriteLine("********** " + i);
+                i++;
+            }
+        }
     }
 }

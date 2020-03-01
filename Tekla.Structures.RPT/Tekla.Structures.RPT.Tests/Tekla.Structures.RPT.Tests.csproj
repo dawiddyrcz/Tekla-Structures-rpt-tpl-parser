@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmptyCharsTests.cs" />
+    <Compile Include="InteligentSplitTests.cs" />
     <Compile Include="InternalStringTests.cs" />
     <Compile Include="ParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +66,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="case2.txt" />
+    <Content Include="inteligentSplitCase1.txt" />
     <Content Include="emptyCharsCase1.txt" />
     <Content Include="case1.txt" />
   </ItemGroup>

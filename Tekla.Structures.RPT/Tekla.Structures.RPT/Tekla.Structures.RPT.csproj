@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Footer.cs" />
     <Compile Include="EmptyChars.cs" />
+    <Compile Include="InteligentSplit.cs" />
     <Compile Include="InternalString.cs" />
     <Compile Include="Pageheader.cs" />
     <Compile Include="Parser.cs" />
