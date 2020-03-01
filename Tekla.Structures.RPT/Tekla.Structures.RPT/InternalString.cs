@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Tekla.Structures.RPT
 {
@@ -14,12 +11,22 @@ namespace Tekla.Structures.RPT
             public List<string> InternalTexts { get; set; } = new List<string>();
         }
 
-        private int curlyBracketLevel = 0;
-        private bool currentCharIsOpeningCurlyBracket = false;
-        private bool currentCharIsClosingCurlyBracket = false;
-        private int quoteLevel = 0;
-        private string text = string.Empty;
-        private int internalStringIndex = 0;
+        private bool currentCharIsOpeningCurlyBracket;
+        private bool currentCharIsClosingCurlyBracket ;
+        private string text;
+        private int curlyBracketLevel;
+        private int quoteLevel;
+        private int internalStringIndex;
+
+        private void Reset()
+        {
+            currentCharIsOpeningCurlyBracket = false;
+            currentCharIsClosingCurlyBracket = false;
+            text = string.Empty;
+            curlyBracketLevel = 0;
+            quoteLevel = 0;
+            internalStringIndex = 0;
+        }
 
         public UnpackResult Unpack(string inputText)
         {
@@ -56,6 +63,8 @@ namespace Tekla.Structures.RPT
             }
             
             output.Text = externalText.ToString();
+
+            Reset();
             return output;
         }
 
@@ -83,16 +92,6 @@ namespace Tekla.Structures.RPT
                 curlyBracketLevel--;
                 currentCharIsClosingCurlyBracket = true;
             }
-        }
-
-        private void Reset()
-        {
-            currentCharIsOpeningCurlyBracket = false;
-            currentCharIsClosingCurlyBracket = false;
-            text = string.Empty;
-            curlyBracketLevel = 0;
-            internalStringIndex = 0;
-            quoteLevel = 0;
         }
     }
 }
