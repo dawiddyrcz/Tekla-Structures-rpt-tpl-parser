@@ -1,0 +1,22 @@
+﻿template 1
+{
+    name = "template_1	ff	asdfas erwtcxb      cxb cxvb cv   cxb sdsdg sd";
+    type = TEXTUAL;
+    width = 84;
+    
+	pageheader 
+    {
+        name = "PAGEHEADER one ";
+        height = 6;
+        outputpolicy = NONE;
+
+        valuefield 
+        {
+            name = "PAGE asdf asdf sd sdaf";
+            location = (77, 4);
+            formula = "GetValue(\"PAGE1\")";
+           
+            fontstyle = 0;
+        };
+    };
+};
