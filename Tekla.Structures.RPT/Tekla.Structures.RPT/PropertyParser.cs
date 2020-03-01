@@ -8,23 +8,38 @@ namespace Tekla.Structures.RPT
     internal class PropertyParser
     {
         private Dictionary<string, object> enumValuesDictionary = new Dictionary<string, object>();
+        private Dictionary<string, object> noneValuesDictionary = new Dictionary<string, object>();
+
         private InteligentSplit inteligentSplit = new InteligentSplit();
         private string currentText = string.Empty;
+        private string currentName = string.Empty;
 
         public PropertyParser()
         {
             var enumTypes = new Type[]
             {
-                //typeof(En1),
-                //typeof(En2),
-                //typeof(En3),
+                typeof(FillPolicy),
+                typeof(FillDirection),
+                typeof(FillStartFrom),
+                typeof(OutputPolicy),
+                typeof(Datatype),
+                typeof(Justify),
+                typeof(SortDirection),
+                typeof(Oncombine),
+                typeof(SortType),
+                typeof(TemplateType),
             };
             
             foreach (var type in enumTypes)
             {
-                foreach (var val in type.GetEnumValues())
+                foreach (var value in type.GetEnumValues())
                 {
-                    enumValuesDictionary.Add(val.ToString(), val);
+                    if (value.ToString().ToUpper().Equals("NONE" , StringComparison.InvariantCulture))
+                    {
+                        noneValuesDictionary.Add(type.Name.ToLower(), value);
+                    }
+                    else
+                        enumValuesDictionary.Add(value.ToString().ToUpper(), value);
                 }
             }
         }
@@ -37,14 +52,15 @@ namespace Tekla.Structures.RPT
             currentText = text;
             var output = new ParsedProperty();
             var equalIndex = text.IndexOf('=');
+            currentName = text.Substring(0, equalIndex);
             var valueText = text.Substring(equalIndex + 1);
 
             if (IsArray(valueText))
                 output.Value = ParseArray(valueText);
             else
                 output.Value = ParseValue(valueText);
-          
-            output.Name = text.Substring(0, equalIndex);
+
+            output.Name = currentName;
             return output;
         }
 
@@ -86,13 +102,38 @@ namespace Tekla.Structures.RPT
                 output = true;
             else if (valueString.Equals("FALSE", StringComparison.InvariantCulture))
                 output = false;
+            else if (TryParseEnum(valueString, out object value))
+                output = value;
             else
                 // throw new RPTParserException("Not supported value type: " + valueString);
-                Console.WriteLine("Not supported value type: {0} for text: {1}",valueString, currentText);
-
-            //TODO rest values
+                Console.WriteLine("Not supported value type: {0} for text: {1}", valueString, currentText);
 
             return output;
+        }
+
+        private bool TryParseEnum(string valueString, out object output)
+        {
+            output = null;
+            if (valueString.ToUpper().Equals("NONE", StringComparison.InvariantCulture))
+            {
+                var key = currentName.ToLower();
+                if (noneValuesDictionary.ContainsKey(key))
+                {
+                    output = noneValuesDictionary[key];
+                    return true;
+                }
+                else return false;
+            }
+            else
+            {
+                var key = valueString.ToUpper();
+                if (enumValuesDictionary.ContainsKey(key))
+                {
+                    output = enumValuesDictionary[key];
+                    return true;
+                }
+                else return false;
+            }
         }
 
         private string RemoveQuotesFromBeginAndEnd(string text)

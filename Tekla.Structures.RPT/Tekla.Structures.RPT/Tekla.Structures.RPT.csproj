@@ -42,11 +42,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums.cs" />
+    <Compile Include="Circle.cs" />
+    <Compile Include="Symbol.cs" />
+    <Compile Include="UserAttribute.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="GraphicalField.cs" />
+    <Compile Include="Picture.cs" />
+    <Compile Include="PolyLine.cs" />
+    <Compile Include="Rectangle.cs" />
+    <Compile Include="PageFooter.cs" />
+    <Compile Include="LineOrArc.cs" />
+    <Compile Include="Header.cs" />
     <Compile Include="Footer.cs" />
     <Compile Include="EmptyChars.cs" />
     <Compile Include="InteligentSplit.cs" />
     <Compile Include="InternalString.cs" />
-    <Compile Include="Pageheader.cs" />
+    <Compile Include="PageHeader.cs" />
     <Compile Include="ParsedProperty.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

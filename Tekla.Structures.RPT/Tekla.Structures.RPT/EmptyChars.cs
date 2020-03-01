@@ -16,6 +16,9 @@ namespace Tekla.Structures.RPT
 
         public string Remove(string inputText)
         {
+            if (string.IsNullOrEmpty(inputText))
+                return inputText;
+
             Reset();
             var outputText = new StringBuilder(inputText.Length);
             outputText.Append(inputText[0]);

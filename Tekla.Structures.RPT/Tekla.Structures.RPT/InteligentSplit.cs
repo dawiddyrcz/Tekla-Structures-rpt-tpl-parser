@@ -16,6 +16,9 @@ namespace Tekla.Structures.RPT
 
         public List<string> Split(string inputText, char schar)
         {
+            if (string.IsNullOrEmpty(inputText))
+                return new List<string>();
+
             Reset();
             var output = new List<string>();
             var currentOutputString = new StringBuilder(100);

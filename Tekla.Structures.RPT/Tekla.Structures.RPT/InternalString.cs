@@ -33,6 +33,9 @@ namespace Tekla.Structures.RPT
             Reset();
             var output = new UnpackResult();
 
+            if (string.IsNullOrEmpty(inputText))
+                return output;
+
             var externalText = new StringBuilder(inputText.Length);
             externalText.Append(inputText[0]);
 
@@ -46,7 +49,7 @@ namespace Tekla.Structures.RPT
                 if (curlyBracketLevel.Equals(1) & currentCharIsOpeningCurlyBracket)
                 {
                     externalText.Append(inputText[i]);
-                    externalText.Append(internalStringIndex);
+                    externalText.Append("#index:" + internalStringIndex);
                     continue;
                 }
                 else if(curlyBracketLevel.Equals(0) & currentCharIsClosingCurlyBracket)

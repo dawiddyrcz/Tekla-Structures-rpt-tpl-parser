@@ -30,7 +30,7 @@ namespace Tekla.Structures.RPT
                 if (string.IsNullOrEmpty(textLine))
                     continue;
 
-                if (textLine.Contains('{') & textLine.Contains('}'))
+                if (textLine.Contains("{#index:") & textLine.Contains('}'))
                 {
                     var name = GetName(textLine);
                     var internalStringIndex = GetIndex(textLine);
@@ -51,9 +51,11 @@ namespace Tekla.Structures.RPT
 
         private int GetIndex(string textLine)
         {
-            var cbindex = textLine.IndexOf('{');
+            //template{#index:81}  should return 81
+
+            var cbindex = textLine.IndexOf("{")+8;
             var cbindex2 = textLine.IndexOf('}');
-            var indexText = textLine.Substring(cbindex + 1, cbindex2 - cbindex - 1);
+            var indexText = textLine.Substring(cbindex, cbindex2 - cbindex);
 
             return Convert.ToInt32(indexText);
         }
@@ -79,16 +81,39 @@ namespace Tekla.Structures.RPT
                 return new Valuefield() { IsTmp = isTmp };
             else if (objectName.Equals("text", StringComparison.InvariantCulture))
                 return new Text() { IsTmp = isTmp };
+            else if (objectName.Equals("lineorarc", StringComparison.InvariantCulture))
+                return new LineOrArc() { IsTmp = isTmp };
+            else if (objectName.Equals("polyline", StringComparison.InvariantCulture))
+                return new PolyLine() { IsTmp = isTmp };
+            else if (objectName.Equals("circle", StringComparison.InvariantCulture))
+                return new Circle() { IsTmp = isTmp };
+            else if (objectName.Equals("rectangle", StringComparison.InvariantCulture))
+                return new Rectangle() { IsTmp = isTmp };
+            else if (objectName.Equals("graphicalfield", StringComparison.InvariantCulture))
+                return new GraphicalField() { IsTmp = isTmp };
+            else if (objectName.Equals("picture", StringComparison.InvariantCulture))
+                return new Picture() { IsTmp = isTmp };
+            else if (objectName.Equals("symbol", StringComparison.InvariantCulture))
+                return new Symbol() { IsTmp = isTmp };
             else if (objectName.Equals("row", StringComparison.InvariantCulture))
                 return new Row() { IsTmp = isTmp };
             else if (objectName.Equals("footer", StringComparison.InvariantCulture))
                 return new Footer() { IsTmp = isTmp };
             else if (objectName.Equals("pageheader", StringComparison.InvariantCulture))
-                return new Pageheader() { IsTmp = isTmp };
+                return new PageHeader() { IsTmp = isTmp };
+            else if (objectName.Equals("pagefooter", StringComparison.InvariantCulture))
+                return new PageFooter() { IsTmp = isTmp };
+            else if (objectName.Equals("header", StringComparison.InvariantCulture))
+                return new Header() { IsTmp = isTmp };
+            else if (objectName.Equals("group", StringComparison.InvariantCulture))
+                return new Group() { IsTmp = isTmp };
             else if (objectName.Equals("template", StringComparison.InvariantCulture))
                 return new Template() { IsTmp = isTmp };
+            else if (objectName.Equals("userattribute", StringComparison.InvariantCulture))
+                return new UserAttribute() { IsTmp = isTmp };
             else if (objectName.Equals("rptfile", StringComparison.InvariantCulture))
                 return new RPTFile() { IsTmp = isTmp };
+            
             else
                 throw new RPTParserException("Could not get object from name: " + objectName);
         }

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tekla.Structures.RPT
 {
-    public class PageHeader : RPTObject
+    public class Circle : RPTObject
     {
-
         public override List<RPTObject> RPTObjects { get; set; } = new List<RPTObject>();
 
         internal override void BindProperty(ParsedProperty property)
