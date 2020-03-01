@@ -1,0 +1,45 @@
+﻿template 1
+{
+    name = "template_1";
+    type = TEXTUAL;
+    width = 84;
+    
+	pageheader 
+    {
+        name = "PAGEHEADER";
+        height = 6;
+        outputpolicy = NONE;
+
+        valuefield 
+        {
+            name = "PAGE";
+            location = (77, 4);
+            formula = "GetValue(\"PAGE1\")";
+           
+            fontstyle = 0;
+        };
+    };
+};
+
+template 2
+{
+    name = "template_2";
+    type = TEXTUAL;
+    width = 84;
+    
+	pageheader 
+    {
+        name = "PAGEHEADER";
+        height = 6;
+        outputpolicy = NONE;
+
+        valuefield 
+        {
+            name = "PAGE";
+            location = (77, 4);
+            formula = "GetValue(\"PAGE2\")";
+           
+            fontstyle = 0;
+        };
+    };
+};
