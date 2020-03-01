@@ -23,7 +23,7 @@ namespace Tekla.Structures.RPT.Tests
             text = new EmptyChars().Remove(text);
 
             var isplit = new InteligentSplit();
-            var result = isplit.Split(text);
+            var result = isplit.Split(text,';');
 
             for (int i = 0; i < result.Count; i++)
             {

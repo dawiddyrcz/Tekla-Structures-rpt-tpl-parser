@@ -14,7 +14,7 @@ namespace Tekla.Structures.RPT
             quoteLevel = 0;
         }
 
-        public List<string> Split(string inputText)
+        public List<string> Split(string inputText, char schar)
         {
             Reset();
             var output = new List<string>();
@@ -28,7 +28,7 @@ namespace Tekla.Structures.RPT
 
                 if (quoteLevel.Equals(0))
                 {
-                    if (inputText[i].Equals(';'))
+                    if (inputText[i].Equals(schar))
                     {
                         output.Add(currentOutputString.ToString());
                         currentOutputString.Clear();
@@ -42,6 +42,8 @@ namespace Tekla.Structures.RPT
             }
 
             Reset();
+            output.Add(currentOutputString.ToString());
+            currentOutputString.Clear();
             return output;
         }
 

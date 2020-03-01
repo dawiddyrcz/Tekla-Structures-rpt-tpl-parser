@@ -122,5 +122,40 @@ namespace Tekla.Structures.RPT.Tests
             Assert.AreEqual(typeof(bool), property1.Value.GetType());
             Assert.AreEqual(typeof(bool), property2.Value.GetType());
         }
+
+        [Test]
+        public void WhenArrayValue_ShouldReturn_ArrayProperty()
+        {
+            var text1 = "margins=(4,0,0,0)";
+            var text2 = "columns=(1,1)";
+
+            var parser = new PropertyParser();
+
+            var property1 = parser.Parse(text1);
+            var property2 = parser.Parse(text2);
+
+            Assert.AreEqual("margins", property1.Name);
+            Assert.AreEqual("columns", property2.Name);
+
+            Assert.AreEqual(4, ((object[])property1.Value).Length);
+            Assert.AreEqual(2, ((object[])property2.Value).Length);
+
+            Assert.AreEqual(typeof(object[]), property1.Value.GetType());
+            Assert.AreEqual(typeof(object[]), property2.Value.GetType());
+
+            Console.WriteLine("property1 values:");
+            foreach (var item in (object[])property1.Value)
+            {
+                Assert.AreEqual(typeof(int), item.GetType());
+                Console.WriteLine(item.ToString() + "\t" + item.GetType());
+            }
+
+            Console.WriteLine("property2 values:");
+            foreach (var item in (object[])property2.Value)
+            {
+                Assert.AreEqual(typeof(int), item.GetType());
+                Console.WriteLine(item.ToString()+ "\t"+item.GetType());
+            }
+        }
     }
 }

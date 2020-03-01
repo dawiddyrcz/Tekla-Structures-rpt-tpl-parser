@@ -23,10 +23,13 @@ namespace Tekla.Structures.RPT
         {
             var currentObject = GetFromName(objectName);
             var unpacked = internalString.Unpack(text);
-            var splittedBySemicolon = inteligentSplit.Split(unpacked.Text);
+            var splittedBySemicolon = inteligentSplit.Split(unpacked.Text, ';');
 
             foreach (var textLine in splittedBySemicolon)
             {
+                if (string.IsNullOrEmpty(textLine))
+                    continue;
+
                 if (textLine.Contains('{') & textLine.Contains('}'))
                 {
                     var name = GetName(textLine);
