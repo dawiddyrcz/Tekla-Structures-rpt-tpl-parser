@@ -101,5 +101,26 @@ namespace Tekla.Structures.RPT.Tests
             Assert.AreEqual(typeof(int), property3.Value.GetType());
             Assert.AreEqual(typeof(int), property4.Value.GetType());
         }
+
+        [Test]
+        public void WhenBoolValue_ShouldReturn_BoolProperty()
+        {
+            var text1 = "cacheable=TRUE";
+            var text2 = "somefalse=FALSE";
+
+            var parser = new PropertyParser();
+
+            var property1 = parser.Parse(text1);
+            var property2 = parser.Parse(text2);
+
+            Assert.AreEqual("cacheable", property1.Name);
+            Assert.AreEqual("somefalse", property2.Name);
+
+            Assert.AreEqual(true, property1.Value);
+            Assert.AreEqual(false, property2.Value);
+
+            Assert.AreEqual(typeof(bool), property1.Value.GetType());
+            Assert.AreEqual(typeof(bool), property2.Value.GetType());
+        }
     }
 }

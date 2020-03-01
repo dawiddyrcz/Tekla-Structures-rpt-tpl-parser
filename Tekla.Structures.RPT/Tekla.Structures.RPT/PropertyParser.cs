@@ -13,11 +13,15 @@ namespace Tekla.Structures.RPT
             var valueString = text.Substring(equalIndex + 1);
 
             if (valueString.Contains('\"'))
-                output.Value = RemoveQuotes(valueString);
+                output.Value = RemoveQuotesFromBeginAndEnd(valueString);
             else if (int.TryParse(valueString, out int intValue))
                 output.Value = intValue;
-            else if (double.TryParse(valueString, NumberStyles.Any, CultureInfo.InvariantCulture ,out double doubleValue))
+            else if (double.TryParse(valueString, NumberStyles.Any, CultureInfo.InvariantCulture, out double doubleValue))
                 output.Value = doubleValue;
+            else if (valueString.Equals("TRUE", StringComparison.InvariantCulture))
+                output.Value = true;
+            else if (valueString.Equals("FALSE", StringComparison.InvariantCulture))
+                output.Value = false;
             else
                 output.Value = valueString;
 
@@ -27,7 +31,7 @@ namespace Tekla.Structures.RPT
             return output;
         }
 
-        private string RemoveQuotes(string valueString)
+        private string RemoveQuotesFromBeginAndEnd(string valueString)
         {
             return valueString.Substring(1, valueString.Length - 2);
         }
