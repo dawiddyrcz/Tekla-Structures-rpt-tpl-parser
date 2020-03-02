@@ -4,27 +4,22 @@ namespace Tekla.Structures.RPT
 {
     public class Symbol : RPTObject
     {
-        public string name = "symbol_5144";
-        public string file = "xsteel.sym";
-        public int symbolid = 2;
-        public double[] refpoint = new double[] { 125.009, 41.541 };
-        public int height = 7;
-        public int width = 7;
-        public int slant = 0;
-        public int angle = 0;
-        public int linepen = 0;
-        public int linecolor = 153;
-        public int linetype = 1;
-        public int linewidth = 1;
-        public int fillpen = 0;
-        public int fillcolor = 153;
-        public int filltype = 1;
+        public string name { get; set; } = "symbol_5144";
+        public string file { get; set; } = "xsteel.sym";
+        public int symbolid { get; set; } = 2;
+        public double[] refpoint { get; set; } = new double[] { 125.009, 41.541 };
+        public double height { get; set; } = 7.0;
+        public double width { get; set; } = 7.0;
+        public int slant { get; set; } = 0;
+        public double angle { get; set; } = 0;
+        public int linepen { get; set; } = 0;
+        public int linecolor { get; set; } = 153;
+        public int linetype { get; set; } = 1;
+        public double linewidth { get; set; } = 1.0;
+        public int fillpen { get; set; } = 0;
+        public int fillcolor { get; set; } = 153;
+        public int filltype { get; set; } = 1;
+        public bool fitinside { get; set; } = false;
 
-        public override List<RPTObject> RPTObjects { get; set; } = new List<RPTObject>();
-
-        internal override void BindProperty(ParsedProperty property)
-        {
-            //TODO implementation
-        }
     }
 }

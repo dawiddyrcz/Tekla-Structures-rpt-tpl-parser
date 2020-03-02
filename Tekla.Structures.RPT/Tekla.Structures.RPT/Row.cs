@@ -11,12 +11,5 @@ namespace Tekla.Structures.RPT
         public string rule { get; set; } = "";
         public string contenttype { get; set; } = "PART";
         public SortType sorttype { get; set; } = SortType.DISTINCT;
-
-        public override List<RPTObject> RPTObjects { get; set; } = new List<RPTObject>();
-
-        internal override void BindProperty(ParsedProperty property)
-        {
-            //TODO implementation
-        }
     }
 }

@@ -9,14 +9,7 @@ namespace Tekla.Structures.RPT
         public int filltype { get; set; } = -1;
         public int color { get; set; } = 153;
         public int linetype { get; set; } = 1;
-        public int linewidth { get; set; } = 1;
+        public double linewidth { get; set; } = 1.0;
         public int pen { get; set; } = -1;
-
-        public override List<RPTObject> RPTObjects { get; set; } = new List<RPTObject>();
-
-        internal override void BindProperty(ParsedProperty property)
-        {
-            //TODO implementation
-        }
     }
 }

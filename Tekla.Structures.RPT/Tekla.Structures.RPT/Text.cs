@@ -13,20 +13,13 @@ namespace Tekla.Structures.RPT
         public string fontname { get; set; } = "Arial";
         public int fontcolor { get; set; } = 156;
         public int fonttype { get; set; } = 2;
-        public int fontsize { get; set; } = 2;
-        public int fontratio { get; set; } = 1;
+        public double fontsize { get; set; } = 2.0;
+        public double fontratio { get; set; } = 1.0;
         public int fontslant { get; set; } = 0;
         public int fontstyle { get; set; } = 0;
-        public int angle { get; set; } = 0;
+        public double angle { get; set; } = 0.0;
         public Justify justify { get; set; } = Justify.CENTERED;
         public int pen { get; set; } = 0;
         public int fontlinewidth { get; set; } = 1;
-
-        public override List<RPTObject> RPTObjects { get; set; } = new List<RPTObject>();
-
-        internal override void BindProperty(ParsedProperty property)
-        {
-            //TODO implementation
-        }
     }
 }

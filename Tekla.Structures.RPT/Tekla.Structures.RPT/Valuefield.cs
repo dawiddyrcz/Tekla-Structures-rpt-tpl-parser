@@ -21,17 +21,14 @@ namespace Tekla.Structures.RPT
         public int fontcolor { get; set; } = 153;
         public int fonttype { get; set; } = 2;
         public double fontsize { get; set; } = 2.5;
-        public int fontratio { get; set; } = 1;
+        public double fontratio { get; set; } = 1.0;
         public int fontstyle { get; set; } = 0;
         public int fontslant { get; set; } = 0;
         public int pen { get; set; } = 6;
         public Oncombine oncombine { get; set; } = Oncombine.NONE;
-
-        public override List<RPTObject> RPTObjects { get; set; } = new List<RPTObject>();
-
-        internal override void BindProperty(ParsedProperty property)
-        {
-            //TODO implementation
-        }
+        public bool formatzeroasempty { get; set; } = false;
+        public string unit { get; set; } = string.Empty;
+        public int fontlinewidth { get; set; } = 1;
+        public string precision { get; set; } = string.Empty;
     }
 }

@@ -4,23 +4,16 @@ namespace Tekla.Structures.RPT
 {
     public class Rectangle : RPTObject
     {
-        public string name = "Rechthoek";
-        public int x1 = 0;
-        public int y1 = 5;
-        public int x2 = 160;
-        public int y2 = 0;
-        public bool filled = false;
-        public int filltype = -1;
-        public int pen = -1;
-        public int color = 164;
-        public int linetype = 1;
-        public int linewidth = 1;
-
-        public override List<RPTObject> RPTObjects { get; set; } = new List<RPTObject>();
-
-        internal override void BindProperty(ParsedProperty property)
-        {
-            //TODO implementation
-        }
+        public string name { get; set; } = "Rechthoek";
+        public double x1 { get; set; } = 0;
+        public double y1 { get; set; } = 5;
+        public double x2 { get; set; } = 160;
+        public double y2 { get; set; } = 0;
+        public bool filled { get; set; } = false;
+        public int filltype { get; set; } = -1;
+        public int pen { get; set; } = -1;
+        public int color { get; set; } = 164;
+        public int linetype { get; set; } = 1;
+        public double linewidth { get; set; } = 1;
     }
 }

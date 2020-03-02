@@ -6,15 +6,10 @@ namespace Tekla.Structures.RPT
     {
         public string name { get; set; } = "Picture";
         public string file { get; set; } = "construsoft.png";
-        public int[] refpoint { get; set; } = new int[] { 9, 4 };
-        public int height { get; set; } = 21;
-        public int width { get; set; } = 101;
-
-        public override List<RPTObject> RPTObjects { get; set; } = new List<RPTObject>();
-
-        internal override void BindProperty(ParsedProperty property)
-        {
-            //TODO implementation
-        }
+        public double[] refpoint { get; set; } = new double[] { 9, 4 };
+        public double height { get; set; } = 21.0;
+        public double width { get; set; } = 101.0;
+        public bool keepaspect { get; set; } = false;
+        public bool fitinside { get; set; } = false;
     }
 }

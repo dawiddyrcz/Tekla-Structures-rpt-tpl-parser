@@ -34,7 +34,7 @@ namespace Tekla.Structures.RPT.Tests
             "current_phase.tpl",
         };
 
-      //  [Test]
+        [Test]
         public void GetAllFilesToCheckEnums()
         {
             var parser = new Parser();
