@@ -77,5 +77,55 @@ namespace Tekla.Structures.RPT.Tests
             }
 
         }
+
+        public abstract class ABSClass
+        {
+            internal void BindProperty(ParsedProperty parsedProperty)
+            {
+                var type = this.GetType();
+                var properties = type.GetProperties().Where(p => p.Name.Equals(parsedProperty.Name)).ToList();
+
+                if (properties.Count > 0)
+                {
+                    var property = properties[0];
+                    property.SetValue(this, parsedProperty.Value);
+                }
+                else Console.WriteLine("There are no propety with name: " + parsedProperty.Name);
+            }
+        }
+
+        public class InhClass : ABSClass
+        {
+            public string name { get; set; }
+            public string text { get; set; }
+            public int iValue { get; set; }
+            public double dValue { get; set; }
+            public double[] ArValue { get; set; }
+        }
+
+        [Test]
+        public void BindingPropertyFromAbstractClass()
+        {
+            var parsedProperty_name = new ParsedProperty() { Name = "name", Value = "the name of invlass" };
+            var parsedProperty_text = new ParsedProperty() { Name = "text", Value = "the text value" };
+            var parsedProperty_iValue = new ParsedProperty() { Name = "iValue", Value = 777 };
+            var parsedProperty_dValue = new ParsedProperty() { Name = "dValue", Value = 777.777 };
+            var parsedProperty_ArValue = new ParsedProperty() { Name = "ArValue", Value = new double[] { 1.0, 2.0, 3.14 } };
+
+
+            var inhObject = new InhClass();
+
+            inhObject.BindProperty(parsedProperty_name);
+            inhObject.BindProperty(parsedProperty_text);
+            inhObject.BindProperty(parsedProperty_iValue);
+            inhObject.BindProperty(parsedProperty_dValue);
+            inhObject.BindProperty(parsedProperty_ArValue);
+
+            Assert.AreEqual(parsedProperty_name.Value, inhObject.name);
+            Assert.AreEqual(parsedProperty_text.Value, inhObject.text);
+            Assert.AreEqual(parsedProperty_iValue.Value, inhObject.iValue);
+            Assert.AreEqual(parsedProperty_dValue.Value, inhObject.dValue);
+            Assert.AreEqual(parsedProperty_ArValue.Value, inhObject.ArValue);
+        }
     }
 }
