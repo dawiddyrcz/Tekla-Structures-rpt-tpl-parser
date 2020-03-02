@@ -22,7 +22,7 @@ namespace Tekla.Structures.RPT
                 typeof(FillDirection),
                 typeof(FillStartFrom),
                 typeof(OutputPolicy),
-                typeof(Datatype),
+                typeof(DataType),
                 typeof(Justify),
                 typeof(SortDirection),
                 typeof(Oncombine),

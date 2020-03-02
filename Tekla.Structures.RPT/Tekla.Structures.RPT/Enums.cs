@@ -32,7 +32,7 @@ namespace Tekla.Structures.RPT
         NOTON,
     }
 
-    public enum Datatype
+    public enum DataType
     {
         STRING,
         INTEGER,

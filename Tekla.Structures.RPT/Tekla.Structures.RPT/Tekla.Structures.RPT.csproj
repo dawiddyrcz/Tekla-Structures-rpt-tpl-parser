@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Enums.cs" />
     <Compile Include="Circle.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Symbol.cs" />
     <Compile Include="UserAttribute.cs" />
     <Compile Include="Group.cs" />
