@@ -5,7 +5,7 @@ namespace Tekla.Structures.RPT
     public class Valuefield : RPTObject
     {
         public string name { get; set; } = "Waarde veld";
-        public int[] location { get; set; } = new int[] { 1, 6 };
+        public Vector2 location { get; set; } = new Vector2(1, 6);
         public string formula { get; set; } = "";
         public int maxnumoflines { get; set; } = 1;
         public DataType datatype { get; set; } = DataType.STRING;

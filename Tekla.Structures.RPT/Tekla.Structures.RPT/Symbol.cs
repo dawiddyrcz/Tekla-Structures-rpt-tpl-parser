@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-
-namespace Tekla.Structures.RPT
+﻿namespace Tekla.Structures.RPT
 {
     public class Symbol : RPTObject
     {
         public string name { get; set; } = "symbol_5144";
         public string file { get; set; } = "xsteel.sym";
         public int symbolid { get; set; } = 2;
-        public double[] refpoint { get; set; } = new double[] { 125.009, 41.541 };
+        public Vector2 refpoint { get; set; } = new Vector2(125.009, 41.541);
         public double height { get; set; } = 7.0;
         public double width { get; set; } = 7.0;
         public int slant { get; set; } = 0;

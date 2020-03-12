@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Tekla.Structures.RPT
+﻿namespace Tekla.Structures.RPT
 {
     internal class ParsedProperty
     {

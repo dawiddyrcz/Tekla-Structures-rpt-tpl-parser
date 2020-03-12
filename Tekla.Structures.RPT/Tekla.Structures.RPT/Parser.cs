@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tekla.Structures.RPT
 {
@@ -51,6 +48,7 @@ namespace Tekla.Structures.RPT
 
         private int GetIndex(string textLine)
         {
+            //How it works:
             //template{#index:81}  should return 81
 
             var cbindex = textLine.IndexOf("{")+8;

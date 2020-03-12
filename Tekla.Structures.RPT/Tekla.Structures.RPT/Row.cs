@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Tekla.Structures.RPT
+﻿namespace Tekla.Structures.RPT
 {
     public class Row : RPTObject
     {

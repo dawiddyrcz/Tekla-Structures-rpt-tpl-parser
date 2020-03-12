@@ -71,6 +71,8 @@
     <Compile Include="Template.cs" />
     <Compile Include="Text.cs" />
     <Compile Include="Valuefield.cs" />
+    <Compile Include="Vector4.cs" />
+    <Compile Include="Vector2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
